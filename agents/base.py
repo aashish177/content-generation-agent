@@ -1,5 +1,5 @@
 from typing import Any, Dict, Optional
-from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnableSerializable
 from config import Config
@@ -7,10 +7,10 @@ from config import Config
 class BaseAgent:
     def __init__(self, name: str, temperature: float = 0.7):
         self.name = name
-        self.llm = ChatAnthropic(
+        self.llm = ChatOpenAI(
             model=Config.MODEL_NAME,
             temperature=temperature,
-            api_key=Config.ANTHROPIC_API_KEY
+            api_key=Config.OPENAI_API_KEY
         )
         self.prompt: Optional[ChatPromptTemplate] = None
         self.chain: Optional[RunnableSerializable] = None

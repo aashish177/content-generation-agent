@@ -16,8 +16,7 @@ class Config:
     OUTPUT_DIR = BASE_DIR / "outputs"
 
     # Model Settings
-    # We can use a smarter model for planning/writing and faster one for others if needed
-    MODEL_NAME = "claude-3-sonnet-20240229"  # Or specific version from spec
+    MODEL_NAME = "gpt-4o"  # OpenAI GPT-4 Turbo
     EMBEDDING_MODEL = "text-embedding-3-small"
 
     # Agent Specifics (Temperatures)
@@ -34,8 +33,8 @@ class Config:
 
     @classmethod
     def validate(cls):
-        if not cls.ANTHROPIC_API_KEY:
-            raise ValueError("ANTHROPIC_API_KEY is missing from environment.")
+        if not cls.OPENAI_API_KEY:
+            raise ValueError("OPENAI_API_KEY is missing from environment.")
             
 # Create output directories if they don't exist
 os.makedirs(Config.OUTPUT_DIR, exist_ok=True)
