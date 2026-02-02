@@ -2,21 +2,9 @@ from datetime import datetime
 from graph.state import ContentState
 from agents.planner import PlannerAgent
 from agents.researcher import ResearchAgent
-
-# Placeholder Agent Classes (to be replaced with actual implementations)
-# ResearchAgent is now real and imported above
-
-class WriterAgent:
-    def write(self, brief, research):
-        return f"Draft content based on brief: {brief.get('topic', 'unknown')} and research."
-
-class EditorAgent:
-    def edit(self, draft, brief):
-        return f"Edited: {draft}", "Fixed specific grammar issues."
-
-class SEOAgent:
-    def optimize(self, content, brief):
-        return f"SEO Optimized: {content}", {"title": "SEO Title", "confidence": 0.9}
+from agents.writer import WriterAgent
+from agents.editor import EditorAgent
+from agents.seo import SEOAgent
 
 def planning_node(state: ContentState) -> ContentState:
     """Planning agent node"""
